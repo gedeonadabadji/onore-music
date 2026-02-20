@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Réseaux Sociaux - Musique</title>
+
+    <!-- Font Awesome pour les icônes -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #0e0e0e;
+            overflow: hidden;
+        }
+
+        /* Notes musicales animées */
+        .note {
+            position: absolute;
+            color: #fff;
+            font-size: 16px;
+            opacity: 0.7;
+            animation: float 10s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Container central */
+        .container {
+            position: relative;
+            background-color: rgba(255,255,255,0.95);
+            padding: 40px 50px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            z-index: 10;
+        }
+
+        /* Profil */
+        .profile-pic {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+
+        .profile-name {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .profile-desc {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 25px;
+        }
+
+        /* Liste des liens sociaux */
+        .social-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .social-links li {
+            margin: 15px 0;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a i {
+            margin-right: 10px;
+            font-size: 18px;
+        }
+
+        .social-links a.instagram { background-color: #e1306c; }
+        .social-links a.facebook { background-color: #1877f2; }
+        .social-links a.tiktok { background-color: #000; }
+        .social-links a.youtube { background-color: #ff0000; }
+
+        .social-links a:hover {
+            transform: translateY(-3px) scale(1.05);
+            opacity: 0.85;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Container -->
+    <div class="container">
+        <img src="./pp.jpg" alt="Profil" class="profile-pic">
+        <div class="profile-name">Mon Profil</div>
+        <div class="profile-desc">Bienvenue ! Suivez-moi sur mes réseaux sociaux et vibrez avec la musique.</div>
+
+        <ul class="social-links">
+            <li><a href="https://www.instagram.com/onore_music?igsh=Zmc5a2xoZXIxZGlt&utm_source=qr" target="_blank" class="instagram"><i class="fab fa-instagram"></i>Instagram</a></li>
+            <li><a href="https://www.facebook.com/Onorelavoixdafrique" target="_blank" class="facebook"><i class="fab fa-facebook-f"></i>Facebook</a></li>
+            <li><a href="https://www.tiktok.com/@onore_music?_r=1&_t=ZS-944zO8uEkeS" target="_blank" class="tiktok"><i class="fab fa-tiktok"></i>TikTok</a></li>
+            <li><a href="https://www.youtube.com/channel/UCN6R1ihJmxBZFJWa6PPRBzA" target="_blank" class="youtube"><i class="fab fa-youtube"></i>YouTube</a></li>
+        </ul>
+    </div>
+
+    <script>
+        // Animation des notes musicales
+        const notes = ['🎵','🎶','🎼','🎹','🎷','🎺','🥁','🎸'];
+        const totalNotes = 25;
+
+        for (let i = 0; i < totalNotes; i++) {
+            const note = document.createElement('div');
+            note.classList.add('note');
+            note.innerText = notes[Math.floor(Math.random() * notes.length)];
+            note.style.left = Math.random() * 100 + 'vw';
+            note.style.fontSize = (10 + Math.random() * 20) + 'px';
+            note.style.animationDuration = (5 + Math.random() * 10) + 's';
+            document.body.appendChild(note);
+        }
+
+        // Interaction des liens sociaux
+        const links = document.querySelectorAll('.social-links a');
+        links.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const url = link.href;
+                alert(`Vous allez être redirigé vers : ${url}`);
+                window.open(url, "_blank");
+            });
+        });
+    </script>
+
+</body>
+</html>
